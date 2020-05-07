@@ -1,0 +1,17 @@
+body {
+background-color: #E95420;
+color: white;
+padding: 15%;
+}
+
+a {
+color: white;
+}
+
+a:hover {
+color: grey;
+}
+
+a:click {
+color: grey;
+}

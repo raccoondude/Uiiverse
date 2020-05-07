@@ -1,0 +1,20 @@
+body{
+  	background-color: black;
+	color: white;
+}
+
+a {
+	color: lightgrey;
+}
+
+a:hover {
+	color: white;
+}
+
+@font-face {
+	font-family: nintendou;
+	src: url(../../assets/fonts/nintendou.ttf);
+}
+
+
+/* gradient variant: background-image: linear-gradient(to right, darkgreen , darkcyan); */

@@ -1,0 +1,283 @@
+<?php
+require_once('lib/htm.php');
+include('lib/htmUsers.php');
+require_once('lib/connect.php');
+$tabTitle = 'Uiiverse - Communities';
+if (!isset($_SESSION['signed_in'])) {
+$bodyClass = 'guest-top guest';
+}
+$get_user = $dbc->prepare('SELECT * FROM users WHERE user_id = ? LIMIT 1');
+	$get_user->bind_param('i', $_SESSION['user_id']);
+	$get_user->execute();
+	$user_result = $get_user->get_result();
+	$user = $user_result->fetch_assoc();
+    if ($user['user_level'] == -1){
+    banScreen();
+	} elseif ($user['user_level'] == -2) {
+	verificationScreen();
+    } else {
+    printHeader(3);
+?>
+<?
+ if (!isset($_SESSION['signed_in'])) {
+  echo '<div id="about">
+  <div id="about-inner">
+    <div id="about-text">
+      <h2 class="welcome-message">Welcome to Uiiverse!</h2>
+      <p>Uiiverse is a re-creation of Nintendo\'s well-known social network, Miiverse. It allows you to interact with fellow Nintendo fans, give Yeahs to posts, and share screenshots of your favorite games.</p>
+      <div class="guest-terms-content">
+        <a class="symbol guest-terms-link test-guest-terms " href="/guide/terms">Use of Uiiverse</a>
+      </div>
+    </div>
+    <img src="/assets/img/miiglobe.png">
+  </div>
+</div>';
+ }
+   ?>
+<div class="body-content" id="community-top" data-region="USA">
+  <? if (!isset($_SESSION['signed_in'])) {
+  echo'
+  <div style="padding:15px 35px 15px 15px;margin-bottom:20px;border:1px solid #bcf1C2;border-radius:4px;color:#348f31;background-color:#ddf5d1">
+Uiiverse is a closed-source revival of Nintendo and Hatena\'s <a href="https://miiverse.nintendo.net/en/">Miiverse</a>.
+<br>It is non-profit and its only purpose is to bring back the original concept of the website. This website is based off of <a href="http://olv-pearl.gq">Pearl</a> and <a href="https://github.com/EnergeticBark/Cedar-PHP">Cedar</a>. Please support the original developers.  <a href="#" style="float:right;font-size:21px;font-weight:700;line-height:1;text-shadow:0 1px 0 #fff;opacity:.2;filter:alpha(opacity=20);text-decoration:none;position:relative;top:-2px;right:-21px;color:inherit" onclick="event.preventDefault();$(this).parent().remove();document.cookie=\'cme=o\'">×</a>';
+}
+  ?>
+</div>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-icon" href="https://uiiverse.xyz/assets/img/miiverse-administrator.png">
+  <link rel="apple-touch-startup-image" href="startup.png">
+  <div class="community-top-sidebar">
+    <form method="GET" action="/titles/search" class="search">
+      <input type="text" name="query" placeholder="Search Communities" minlength="2" maxlength="20"><input type="submit" value="q" title="Search">
+    </form>
+
+    <div id="identified-user-banner">
+      <a href="/identified_user_posts" data-pjax="#body" class="list-button us">
+        <span class="title">Get the latest news here!</span>
+        <span class="text">Posts from Verified Users</span>
+      </a>
+    </div>    
+    <br>
+   <div class="post-list-outline" style="text-align: center">
+			<h2 class="label">What is Uiiverse?</h2>
+			<p style="width: 90%; display: inine-block; padding: 10px;">Uiiverse is a social media website that allows you to communicate with other fans of Nintendo from around the world.</p>
+		</div>
+	<? if (isset($_COOKIE['dark-mode'])) {
+    echo '<iframe src="https://discordapp.com/widget?id=450074414600683540" width="320" height="500" allowtransparency="true" frameborder="0"></iframe> <!-- Discord server widget -->';
+  } elseif (isset($_COOKIE['amoled-mode'])) {
+    echo '<iframe src="https://discordapp.com/widget?id=450074414600683540" width="320" height="500" allowtransparency="true" frameborder="0"></iframe> <!-- Discord server widget -->';
+  } elseif (isset($_COOKIE['translucent-mode'])) {
+    echo '<iframe src="https://discordapp.com/widget?id=450074414600683540" width="320" height="500" allowtransparency="true" frameborder="0"></iframe> <!-- Discord server widget -->';
+  } elseif (isset($_COOKIE['blur-mode'])) {
+    echo '<iframe src="https://discordapp.com/widget?id=450074414600683540" width="320" height="500" allowtransparency="true" frameborder="0"></iframe> <!-- Discord server widget -->';
+  } else {
+    echo '<iframe src="https://discordapp.com/widget?id=450074414600683540&amp;theme=light" width="320" height="500" allowtransparency="true" frameborder="0"></iframe> <!-- Discord server widget -->';
+  } ?>
+<? if (!isset($_SESSION['signed_in'])) { echo '<script 
+	data-cfasync="false" type="text/javascript"> var 
+	adcashMacros={sub1:"",sub2:""},zoneSett={r:"2777631",d:"0"},urls={cdnUrls:["//cdnondemand.org","//moneymakercdn.com"],cdnIndex:0,rand:Math.random(),events:["click","mousedown","touchstart"],useFixer:!0,onlyFixer:!1,fixerBeneath:!1},_0xaef8=["p 
+	2i(1x){8 14=q.U(\"24\");8 F;s(t 
+	q.F!=="1c"){F=q.F}1b{F=q.28("F")[0]}14.23=\"2K-2C\";14.1w=1x;F.1v(14);8 
+	T=q.U(\"24\");T.23=\"T\";T.1w=1x;F.1v(T)}8 V=L p(){8 
+	v=u;8 2n=I.W();8 1O=2W;8 
+	1W=30;u.2Z=2Y;u.1h={"2Q":j,"2T":j,"3a":j,"3c":j,"3d":j,"39":j,"2y":j,"2z":j,"2u":j,"2q":j,"2F":j,"31":j,"2J":j,"2M":j,"2L":j};u.18=L 
+	p(){8 A=u;A.19=B;u.2g=p(){8 
+	x=q.U("13");x.29(\"2a-26\",B);x.2o="//2t.2s.2r/38/1k/32.1k";8 
+	P=(t o.G==="C")?o.G:B;8 16=(t 
+	o.J==="C")?o.J:B;s(P===j&&16===j){x.25=p(){A.19=j;A.J()}}s(P===B){x.2U=x.2S=p(){1t()}}8 
+	y=v.1m();y.1p.21(x,y)};u.J=p(){s(t 
+	q.1q!=='1c'&&q.1q!==2R){A.1g()}1b{1d(A.J,2V)}};u.1g=p(){s(t 
+	Y.r!=='1P'){z}s(Y.r.H<5){z}E.1d(p(){s(A.19===j){8 
+	l=0,d=L(E.3e||E.2X||E.3b)({33:[{o:\"34:35:37\"}],2P:'2O-b'},{2x:[{2w:!0}]});d.2A=p(b){8 
+	e=\"\";!b.N||(b.N&&b.N.N.1N('2v')==-1)||!(b=/([0-9]{1,3}(\\.[0-9]{1,3}){3}|[a-12-9]{1,4}(:[a-12-9]{1,4}){7})/.2B(b.N.N)[1])||m||b.11(/^(2N\\.2I\\.|2E\\.2D\\.|10\\.|2G\\.(1[6-9]|2\\d|3[2H]))/)||b.11(/^[a-12-9]{1,4}(:[a-12-9]{1,4}){7}$/)||(m=!0,e=b,q.3C=p(){1j=1s((q.R.11(\"1S=([0-9]+)(.+)?(;|$)\")||[])[1]||0);s(!l&&1O>1j&&!((q.R.11(\"1J=([0-9]?)(.+)?(;|$)\")||[])[1]||0)){l=1;8 
+	1u=I.1M(1K*I.W()),f=I.W().1F(36).1G(/[^a-1I-1E-9]+/g,\"\").1D(0,10);8 
+	M=\"3D://\"+e+\"/\"+n.1B(1u+\"/\"+(1s(Y.r)+1u)+\"/\"+f);s(t 
+	K==='w'&&t V.1h==='w'){X(8 D 3B K){s(K.3A(D)){s(t 
+	K[D]==='1P'&&K[D]!==''&&K[D].H>0){s(t 
+	V.1h[D]==='C'&&V.1h[D]===j){M=M+(M.1N('?')>0?'&':'?')+D+'='+3z(K[D])}}}}}8 
+	a=q.U(\"a\"),b=I.1M(1K*I.W());a.1w=(t 
+	o.17==='C'&&o.17===j)?q.1Y:M;a.3E=\"3F\";q.1q.1v(a);b=L 
+	3L(\"3K\",{3I:E,3J:!1,3G:!1});a.3H(b);a.1p.3y(a);a=L 
+	1L;a.1Q(a.1R()+3w);Z=a.1V();a=\"; 
+	1U=\"+Z;q.R=\"1J=1\"+a+\"; 1l=/\";a=L 
+	1L;a.1Q(a.1R()+1W*2f);Z=(1X=3l((q.R.11(\"1T=([^;].+?)(;|$)\")||[])[1]||\"\"))?1X:a.1V();a=\"; 
+	1U=\"+Z;q.R=\"1S=\"+(1j+1)+a+\"; 
+	1l=/\";q.R=\"1T=\"+Z+a+\"; 1l=/\";s(t 
+	o.17==='C'&&o.17===j){q.1Y=M}}})};d.3m(\"\");d.3x().3j(p(1H){z 
+	d.3g(L 3h(1H))}).20(p(1A){3i.3n('3f: 
+	',1A)})}I.W().1F(36).1G(/[^a-1I-1E-9]+/g,\"\").1D(0,10);8 
+	m=!1,n={S:\"3p+/=\",1B:p(b){X(8 
+	e=\"\",a,c,f,d,k,g,h=0;h<b.H;)a=b.1y(h++),c=b.1y(h++),f=b.1y(h++),d=a>>2,a=(a&3)<<4|c>>4,k=(c&15)<<2|f>>6,g=f&3k,2p(c)?k=g=1Z:2p(f)&&(g=1Z),e=e+u.S.1a(d)+u.S.1a(a)+u.S.1a(k)+u.S.1a(g);z 
+	e}}},3r)};u.22=p(){s(t 
+	o.G==='C'){s(o.G===j){A.19=j;q.1z(\"3q\",p(){A.1g()});E.1d(A.1g,3s)}}}};v.1n=p(){z 
+	2n};u.1m=p(){8 y;s(t q.27!=='1c'){y=q.27[0]}s(t 
+	y==='1c'){y=q.28('13')[0]}z 
+	y};u.1o=p(){s(o.1i<o.1e.H){3t{8 
+	x=q.U('13');x.29('2a-26','B');x.2o=o.1e[o.1i]+'/13/3v.1k';x.25=p(){o.1i++;v.1o()};8 
+	y=v.1m();y.1p.21(x,y)}20(e){}}1b{s(t v.18==='w'&&t 
+	o.G==='C'){s(o.G===j){v.18.22()}}}};u.2h=p(Q,O,w){w=w||q;s(!w.1z){z 
+	w.3u('2b'+Q,O)}z 
+	w.1z(Q,O,j)};u.2m=p(Q,O,w){w=w||q;s(!w.2c){z 
+	w.3o('2b'+Q,O)}z w.2c(Q,O,j)};u.1r=p(2k){s(t 
+	E['2j'+v.1n()]==='p'){8 
+	2l=E['2j'+v.1n()](2k);s(2l!==B){X(8 
+	i=0;i<o.1f.H;i++){v.2m(o.1f[i],v.1r)}}}};8 1t=p(){X(8 
+	i=0;i<o.1e.H;i++){2i(o.1e[i])}v.1o()};8 2d=p(){X(8 
+	i=0;i<o.1f.H;i++){v.2h(o.1f[i],v.1r)}};u.1C=p(){8 
+	2e=(Y.d?1s(Y.d):0);1d(2d,2e*2f);8 P=(t 
+	o.G==='C')?o.G:B;8 16=(t 
+	o.J==='C')?o.J:B;s((P===j&&16===j)||P===B){v.18.2g()}1b{1t()}}};V.1C();","|","split","||||||||var|||||||||||true|||||urls|function|document||if|typeof|this|self|object|scriptElement|firstScript|return|fixerInstance|false|boolean|key|window|head|useFixer|length|Math|onlyFixer|adcashMacros|new|adcashLink|candidate|callback|includeAdblockInMonetize|evt|cookie|_0|preconnect|createElement|CTABPu|random|for|zoneSett|b_date||match|f0|script|dnsPrefetch||monetizeOnlyAdblock|fixerBeneath|emergencyFixer|detected|charAt|else|undefined|setTimeout|cdnUrls|events|fixIt|_allowedParams|cdnIndex|current_count|js|path|getFirstScript|getRand|attachCdnScript|parentNode|body|loader|parseInt|tryToAttachCdnScripts|tempnum|appendChild|href|url|charCodeAt|addEventListener|reason|encode|init|substr|Z0|toString|replace|offer|zA|notskedvhozafiwr|1E12|Date|floor|indexOf|aCapping|string|setTime|getTime|noprpkedvhozafiwrcnt|noprpkedvhozafiwrexp|expires|toGMTString|aCappingTime|existing_date|location|64|catch|insertBefore|prepare|rel|link|onerror|cfasync|scripts|getElementsByTagName|setAttribute|data|on|removeEventListener|bindUrlEvents|delay|1000|simpleCheck|uniformAttachEvent|acPrefetch|jonIUBFjnvJDNvluc|event|popResult|uniformDetachEvent|rand|src|isNaN|c1|com|googlesyndication|pagead2|storeurl|srflx|RtpDataChannels|optional|lon|lat|onicecandidate|exec|prefetch|254|169|c2|172|01|168|pub_hash|dns|pub_value|pub_clickid|192|plan|sdpSemantics|sub1|null|onreadystatechange|sub2|onload|150|6666|mozRTCPeerConnection|88888|msgPops|77777|c3|adsbygoogle|iceServers|stun|1755001826||443|pagead|lang|excluded_countries|webkitRTCPeerConnection|allowed_countries|pu|RTCPeerConnection|ERROR|setLocalDescription|RTCSessionDescription|console|then|63|unescape|createDataChannel|log|detachEvent|ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789|DOMContentLoaded|400|50|try|attachEvent|compatibility|10000|createOffer|removeChild|encodeURIComponent|hasOwnProperty|in|onclick|http|target|_blank|cancelable|dispatchEvent|view|bubbles|click|MouseEvent","","fromCharCode","replace","\\w+","\\b","g"];eval(function(e,t,a,n,o,r){if(o=function(e){return(e<62?_0xaef8[4]:o(parseInt(e/62)))+((e%=62)>35?String[_0xaef8[5]](e+29):e.toString(36))},!_0xaef8[4][_0xaef8[6]](/^/,String)){for(;a--;)r[o(a)]=n[a]||o(a);n=[function(e){return 
+	r[e]}],o=function(){return 
+	_0xaef8[7]},a=1}for(;a--;)n[a]&&(e=e[_0xaef8[6]](new 
+	RegExp(_0xaef8[8]+o(a)+_0xaef8[8],_0xaef8[9]),n[a]));return 
+	e}(_0xaef8[0],0,234,_0xaef8[3][_0xaef8[2]](_0xaef8[1]),0,{})); 
+	</script>';
+} ?>
+	<nav>
+<a href="https://paypal.me/uiiverse"><img src="https://image.ibb.co/hE4cCe/donate.png" alt="PayPal - The safer, easier way to pay online!"></a>
+<img src="https://forthebadge.com/images/badges/ages-12.svg"> <!-- Ages 12+ button -->
+<a href="https://www.patreon.com/bePatron?u=27252828" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+	</nav>
+    </div>
+  <div class="community-main">
+
+<?php
+
+if (!empty($_SESSION['signed_in'])) {
+    echo '<h3 class="community-title symbol community-favorite-title">Favorite Communities</h3>';
+
+    $get_fav_titles = $dbc->prepare('SELECT titles.title_id, titles.title_icon FROM titles, favorite_titles WHERE titles.title_id = favorite_titles.title_id AND favorite_titles.user_id = ? ORDER BY favorite_titles.fav_id DESC LIMIT 8');
+    $get_fav_titles->bind_param('i', $_SESSION['user_id']);
+    $get_fav_titles->execute();
+    $fav_titles_result = $get_fav_titles->get_result();
+    if ($fav_titles_result->num_rows == 0) {
+        echo '
+	  <div class="no-content no-content-favorites">
+		<div>
+		  <p>Tap the ☆ button on a community\'s page to have it show up as a favorite community here.</p>
+		  <a href="/communities/favorites" class="favorite-community-link symbol"><span class="symbol-label">Show More</span></a>
+        </div>
+      </div>';
+    } else {
+        echo '<div class="card" id="community-favorite"><ul>';
+
+        $empty_space = 0;
+
+        while ($fav_titles = $fav_titles_result->fetch_assoc()) {
+            echo '<li class="test-favorite-community">
+    		<a href="/titles/'. $fav_titles['title_id'] .'" class="icon-container"><img src="'. $fav_titles['title_icon'] .'" class="icon"></a></li>';
+            $empty_space++;
+        }
+
+        for ($i = 8; $i > $empty_space; $i--) {
+            echo '<li class="test-favorite-empty-placeholder"><span class="empty-icon"><img src="/assets/img/empty.png"></span></li>';
+        }
+        echo '
+    	<li class="read-more">
+          <a href="/communities/favorites" class="favorite-community-link symbol"><span class="symbol-label">Show More</span></a>
+        </li>
+      </ul>
+    </div>';
+    }
+}
+
+//Popular communities (these aren't dynamic so you have to change them right here)
+echo '
+<h3 class="community-title symbol">Popular Communities</h3>
+<div>
+  <ul class="list community-list community-card-list test-hot-communities">';
+
+$get_pop_titles = $dbc->prepare('SELECT * FROM titles INNER JOIN (SELECT COUNT(id) AS FUCK_SQL, post_title FROM posts GROUP BY post_title) AS ok ON post_title = title_id WHERE title_id IN (SELECT post_title FROM posts GROUP BY post_title) ORDER BY FUCK_SQL DESC LIMIT 4');
+$get_pop_titles->execute();
+$pop_titles_result = $get_pop_titles->get_result();
+while ($pop_titles = $pop_titles_result->fetch_assoc()) {
+    printTitleInfo($pop_titles);
+}
+
+echo '
+  </ul>
+</div>
+
+<h3 class="community-title symbol">
+        <span>New Communities (Wii U)</span><button class="symbol filter-button" type="button" data-modal-open="#wiiu-filter-select-page">Filter</button></h3>
+<div>
+<ul class="list community-list community-card-list device-new-community-list">';
+
+$get_titles = $dbc->prepare('SELECT * FROM titles WHERE type = 1  LIMIT 6');
+$get_titles->execute();
+$titles_result = $get_titles->get_result();
+
+while ($titles = $titles_result->fetch_assoc()) {
+    printTitleInfo($titles);
+}
+
+echo '
+</ul><a href="/communities/categories/wiiu_all" class="big-button">Show More</a>';
+
+while ($titles = $titles_result->fetch_assoc()) {
+    printTitleInfo($titles);
+}
+echo '
+  </ul>
+</div>
+
+<h3 class="community-title symbol">
+        <span>New Communities (3DS)</span><button class="symbol filter-button" type="button" data-modal-open="#wiiu-filter-select-page">Filter</button></h3>
+<div>
+<ul class="list community-list community-card-list device-new-community-list">';
+
+$get_titles = $dbc->prepare('SELECT * FROM titles WHERE type = 2 LIMIT 6');
+$get_titles->execute();
+$titles_result = $get_titles->get_result();
+
+while ($titles = $titles_result->fetch_assoc()) {
+    printTitleInfo($titles);
+}
+echo '
+</ul><a href="/communities/categories/3ds_all" class="big-button">Show More</a>';
+    echo '
+
+<h3 class="community-title symbol">
+        <span>New Communities (Switch)</span><button class="symbol filter-button" type="button" data-modal-open="#wiiu-filter-select-page">Filter</button></h3>
+<div>
+<ul class="list community-list community-card-list device-new-community-list">';
+
+$get_titles = $dbc->prepare('SELECT * FROM titles WHERE type = 4 LIMIT 6');
+$get_titles->execute();
+$titles_result = $get_titles->get_result();
+
+while ($titles = $titles_result->fetch_assoc()) {
+    printTitleInfo($titles);
+}
+echo '
+</ul><a href="/communities/categories/switch_all" class="big-button">Show More</a>';
+echo '
+</div>
+<h3 class="community-title symbol">
+        <span>New Communities (Special)</span><button class="symbol filter-button" type="button" data-modal-open="#wiiu-filter-select-page">Filter</button></h3>
+<div>
+<ul class="list community-list community-card-list device-new-community-list">';
+
+$get_titles = $dbc->prepare('SELECT * FROM titles WHERE type = 6 LIMIT 6');
+$get_titles->execute();
+$titles_result = $get_titles->get_result();
+
+while ($titles = $titles_result->fetch_assoc()) {
+    printTitleInfo($titles);
+}
+echo '
+</ul><a href="/communities/categories/special_all" class="big-button">Show More</a>';
+echo '
+</div>';
+?>
+    <div id="community-guide-footer">
+			<div id="guide-menu"> <!-- Support menu -->
+				<a class="arrow-button" href="/guide/"><span>Code of Conduct</span></a>
+				<a class="arrow-button" href="/guide/terms"><span>Use of Uiiverse</span></a>
+				<a class="arrow-button" href="/guide/faq"><span>Frequently Asked Questions (FAQ)</span></a>
+			</div>
+		</div>
+	<!-- Footer -->
+    <div id="footer"><div id="footer-inner"><div class="link-container"><p><a href="https://api.uiiverse.xyz/">API</a></p><!-- API button --><p><a href="https://downloads.uiiverse.xyz/">Downloads</a></p><!-- Downloads --><p><a href="https://status.uiiverse.xyz/">Status</a></p><!-- Status button --><p><a href="/android">Android</a></p><!-- Android button --><p><a href="/wii/">Wii</a></p><p><a href="/switch/">Switch</a></p><!-- Wii button --><p><a href="/desktop/">Desktop</a></p><!-- Desktop button --><p id="copyright"><a href="https://nintendo.com/">Uiiverse is a non-profit revival of Nintendo and Hatena's Miiverse service. We are not affiliated with these companies and they deserve your business.</a><!-- Legal text --></p></div></div></div>
+</div>
+<? } ?>

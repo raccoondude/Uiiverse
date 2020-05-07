@@ -1,0 +1,17 @@
+// to generate a key type in gpg --gen-key in the command line
+// to export public key gpg --export -a "User Name" > public.key
+
+<?php
+putenv("GNUPGHOME=/tmp");
+
+// it assumes public key exists in the /tmp/keys folder
+$publicKey = file_get_contents(getenv('GNUPGHOME') . '/keys/public.key');
+
+    $gpg = new gnupg();
+    $gpg->seterrormode(gnupg::ERROR_EXCEPTION);
+    $info = $gpg->import($publicKey);
+    $gpg->addencryptkey($info['fingerprint']);
+
+    $uploadFileContent = file_get_contents('/tmp/file-to-encrypt');
+    $enc = $gpg->encrypt($uploadFileContent);
+    echo $enc
