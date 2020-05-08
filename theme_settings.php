@@ -31,8 +31,9 @@ require_once('lib/htmUsers.php');
             <input id="neon" onclick="neonTheme()" class="black-button" type="button" value="Neon">
 				<input id="translucent" onclick="translucentTheme()" class="black-button" type="button" value="Translucent">
 				<input id="blur" onclick="blurTheme()" class="black-button" type="button" value="Blur">
-				<input id="stripe" onclick="stripeTheme()" class="black-button" type="button" value="Stripe"> 
+				<input id="stripe" onclick="stripeTheme()" class="black-button" type="button" value="Stripe">
 				<input id="retro" onclick="retroTheme()" class="black-button" type="button" value="Retro WIP">
+				<input id="Custom (BETA)" onclick="customTheme()" class="black-button" type="button" value="OwO">
 				</br>
 			</center>
 			<b>    Set Background</b>
@@ -62,4 +63,3 @@ require_once('lib/htmUsers.php');
 	</div>
   </div>
 </div>';
-
