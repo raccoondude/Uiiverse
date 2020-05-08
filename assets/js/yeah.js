@@ -1,7 +1,7 @@
 /* I'll give a bit of documentation on the functions here.
 
 popup(title, text):
-	it does a popup box that looks like miiverses with an ok button to close it 
+	it does a popup box that looks like miiverses with an ok button to close it
 
 
 */
@@ -50,7 +50,7 @@ function getNotifs() {
 	});
 }
 
-setInterval(function(){ 
+setInterval(function(){
     	getNotifs();
     }, 30000);
 
@@ -118,7 +118,7 @@ function translucentTheme() {
    var expires = "expires="+ d.toUTCString();
 	document.cookie = "translucent-mode=1;" + expires + ";path=/";
 	$('.empty-icon').children().attr('src', '/assets/img/dark-empty.png');
-	window.location.reload(false); 
+	window.location.reload(false);
 }
 function blurTheme() {
 	document.cookie = 'dark-mode=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
@@ -156,6 +156,10 @@ function retroTheme() {
 	$('.empty-icon').children().attr('src', '/assets/img/dark-empty.png');
 	window.location.reload(false);
 }
+
+function customTheme() {
+	alert("Hey, you called me! But I don't do anything....yet")	
+}
 function setBackground(backgroundURL) {
 	document.cookie = 'background=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
 	var expires = "expires="+ d.toUTCString();
@@ -169,12 +173,12 @@ function removeBackground() {
 }
 
 function bindEvents() {
-	
+
 	$(".trigger").off().on('click', (function(){
 		var href = $(this).attr('data-href');
-		
+
 		//if you click on a post it takes you to 'data-href' an attribute defined in list.php for each post
-		
+
 		$.pjax({url: href, container: '#main-body'});
     }));
 
@@ -215,7 +219,7 @@ function bindEvents() {
 
 					$('#'+postId).closest('div').find('[yeahs]').attr('yeahs', Number($('#'+postId).closest('div').find('[yeahs]').attr('yeahs')) - 1);
 
-					if(nahType == 0){ 
+					if(nahType == 0){
 						$('.icon-container.visitor').attr('style', 'display: none;');
 						if ($('.yeah-count').text() < 1){
 							$('#yeah-content').addClass('none');
@@ -225,7 +229,7 @@ function bindEvents() {
 						if ($('.reply-permalink-post .yeah-count').text() < 1){
 							$('.reply-permalink-post #yeah-content').addClass('none');
 						}
-					} 
+					}
 				}
 
 				nahs = Number($('#'+postId).closest('div').find('[nahs]').attr('nahs'));
@@ -280,7 +284,7 @@ function bindEvents() {
 
 
 
-	
+
     $('.yeah').off().on('click', function(event) {
     	event.stopPropagation();
 
@@ -338,7 +342,7 @@ function bindEvents() {
     	event.stopPropagation();
     	var postId = $(this).attr('id');
 		var yeahType = $(this).attr('data-track-label');
-		
+
 		//same thing here just for unyeahs lol
 		$('#'+postId).attr('disabled', '');
 
@@ -350,7 +354,7 @@ function bindEvents() {
 
 				$('#'+postId).closest('div').find('[yeahs]').attr('yeahs', Number($('#'+postId).closest('div').find('[yeahs]').attr('yeahs')) - 1);
 
-				if (yeahType == 'post') { 
+				if (yeahType == 'post') {
 					$('.icon-container.visitor').attr('style', 'display: none;');
 					if ($('.yeah-count').text() < 1){
 						$('#yeah-content').addClass('none');
@@ -360,7 +364,7 @@ function bindEvents() {
 					if ($('.reply-permalink-post .yeah-count').text() < 1){
 						$('.reply-permalink-post #yeah-content').addClass('none');
 					}
-				} 
+				}
 
 				nahs = Number($('#'+postId).closest('div').find('[nahs]').attr('nahs'));
 
