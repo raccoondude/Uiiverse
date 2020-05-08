@@ -158,7 +158,7 @@ function retroTheme() {
 }
 
 function customTheme() {
-	window.location = "https://youtu.be/PWgvGjAhvIw";
+	alert("Hey, you called me! But I don't do anything....yet")
 }
 function setBackground(backgroundURL) {
 	document.cookie = 'background=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
