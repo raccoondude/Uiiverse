@@ -162,7 +162,7 @@ function customTheme() {
 	var custom = document.getElementById("customowo");
 	var styleSheet = document.createElement("style");
 	styleSheet.type = "text/css";
-	styleSheet.innerText = styles.value();
+	styleSheet.innerText = custom.value();
 	document.head.appendChild(styleSheet);
 }
 function setBackground(backgroundURL) {
