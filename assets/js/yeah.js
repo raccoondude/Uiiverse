@@ -156,7 +156,7 @@ function retroTheme() {
 	$('.empty-icon').children().attr('src', '/assets/img/dark-empty.png');
 	window.location.reload(false);
 }
-
+/*
 function customTheme() {
 	alert("DEBUG");
 	document.cookie = 'dark-mode=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
@@ -175,6 +175,7 @@ function customTheme() {
 	alert("Added");
 	document.cookie = 'customcss='custom.value+";expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/";
 }
+*/
 function setBackground(backgroundURL) {
 	document.cookie = 'background=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
 	var expires = "expires="+ d.toUTCString();
