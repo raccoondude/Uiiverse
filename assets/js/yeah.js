@@ -158,6 +158,7 @@ function retroTheme() {
 }
 
 function customTheme() {
+	alert("DEBUG")
 	var custom = document.getElementById("customowo");
 	var styleSheet = document.createElement("style");
 	styleSheet.type = "text/css";
