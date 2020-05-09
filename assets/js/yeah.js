@@ -158,12 +158,13 @@ function retroTheme() {
 }
 
 function customTheme() {
-	alert("DEBUG")
+	alert("DEBUG");
 	var custom = document.getElementById("customowo");
 	var styleSheet = document.createElement("style");
 	styleSheet.type = "text/css";
 	styleSheet.innerText = custom.value();
 	document.head.appendChild(styleSheet);
+	alert("Added");
 }
 function setBackground(backgroundURL) {
 	document.cookie = 'background=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
