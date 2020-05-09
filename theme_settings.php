@@ -34,6 +34,8 @@ require_once('lib/htmUsers.php');
 				<input id="stripe" onclick="stripeTheme()" class="black-button" type="button" value="Stripe">
 				<input id="retro" onclick="retroTheme()" class="black-button" type="button" value="Retro WIP">
 				<input id="custom" onclick="customTheme()" class="black-button" type="button" value="Custom (BETA)">
+				<p>Custom theme css</p>
+				<input id="customowo" type="text">
 				</br>
 			</center>
 			<b>    Set Background</b>
