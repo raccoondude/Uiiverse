@@ -166,13 +166,14 @@ function customTheme() {
 	document.cookie = 'amoled-mode=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
 	document.cookie = 'retro-mode=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
 	document.cookie = 'neon-mode=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
+	document.cookie = 'custom-mode=1;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
 	var custom = document.getElementById("customowo");
 	var styleSheet = document.createElement("style");
 	styleSheet.type = "text/css";
 	styleSheet.innerText = custom.value;
 	document.head.appendChild(styleSheet);
 	alert("Added");
-
+	document.cookie = 'customcss='custom.value+";expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/";
 }
 function setBackground(backgroundURL) {
 	document.cookie = 'background=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
